@@ -1,0 +1,12 @@
+.profile__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input {
+  height: 3rem;
+}
+
+.form__btn {
+  width: 3rem;
+}

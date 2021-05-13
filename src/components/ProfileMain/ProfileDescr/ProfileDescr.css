@@ -1,0 +1,7 @@
+.main__profile {
+    display: flex;
+  }
+  
+  .profile__avatar {
+    height: 10rem;
+  }
