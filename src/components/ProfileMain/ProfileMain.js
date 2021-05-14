@@ -9,7 +9,6 @@ import ProfileDescr from './ProfileDescr'
 const ProfileMain = () => {
     return (
         <main className="page__main">
-            <div className="main__background"></div>
             <div className="profile__wrapper">
                 <ProfileDescr />
                 <PostForm />
