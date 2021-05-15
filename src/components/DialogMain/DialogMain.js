@@ -6,18 +6,31 @@ import DialogMessageItem from './DialogMessageItem'
 import './DialogMain.css'
 
 const DialogMain = () => {
+
+    let dialogData = [
+        { id: 1, name: 'user1' },
+        { id: 2, name: 'user2' },
+        { id: 3, name: 'user3' },
+        { id: 4, name: 'user4' },
+        { id: 5, name: 'user5' },
+        { id: 6, name: 'user6' },
+        { id: 7, name: 'user7' }
+    ]
+    const newDialogData = dialogData.map((dialog) => <DialogListItem name={dialog.name} id={dialog.id} />)
+
+    let messageData = [
+        { id: 1, message: 'message1' }
+    ]
+    const newMessageData = messageData.map((message) => <DialogMessageItem message={message.message} />)
+
     return (
         <div className="page__main">
             <div className="diaologs__main">
                 <ul className="dialog__list">
-                    <DialogListItem name="User1" id="1"/>
-                    <DialogListItem name="User2" id="2"/>
-                    <DialogListItem name="User3" id="3"/>
-                    <DialogListItem name="User4" id="4"/>
-                    <DialogListItem name="User5" id="5"/>
+                    {newDialogData}
                 </ul>
                 <ul className="message__list">
-                    <DialogMessageItem message="message1"/>
+                    {newMessageData}
                 </ul>
             </div>
         </div>
