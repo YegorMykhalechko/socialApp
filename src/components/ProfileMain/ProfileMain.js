@@ -6,13 +6,14 @@ import PostForm from './PostForm'
 import PostList from './PostList'
 import ProfileDescr from './ProfileDescr'
 
-const ProfileMain = () => {
+const ProfileMain = (props) => {
+
     return (
         <main className="page__main">
             <div className="profile__wrapper">
                 <ProfileDescr />
                 <PostForm />
-                <PostList />
+                <PostList postData={props.postData}/>
             </div>
         </main>
     )

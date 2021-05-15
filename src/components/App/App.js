@@ -8,12 +8,13 @@ import DialogMain from '../DialogMain'
 
 import './App.css'
 
-const App = () => {
+const App = (props) => {
+
     return (
         <div className="wrapper">
             <Header />
             <NavBar />
-            <Route path="/profile" component={ProfileMain} />
+            <Route path="/profile" component={() => <ProfileMain postData={props.postData}/>} />
             <Route path="/dialogs" component={DialogMain} />
         </div>
     )
