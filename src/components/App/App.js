@@ -14,8 +14,8 @@ const App = (props) => {
         <div className="wrapper">
             <Header />
             <NavBar />
-            <Route path="/profile" component={() => <ProfileMain postData={props.postData}/>} />
-            <Route path="/dialogs" component={DialogMain} />
+            <Route path="/profile" component={() => <ProfileMain profileState={props.state.profile} />} />
+            <Route path="/dialogs" component={() => <DialogMain dialogState={props.state.dialogs}/>} />
         </div>
     )
 }

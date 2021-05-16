@@ -13,7 +13,7 @@ const ProfileMain = (props) => {
             <div className="profile__wrapper">
                 <ProfileDescr />
                 <PostForm />
-                <PostList postData={props.postData}/>
+                <PostList profileState={props.profileState} />
             </div>
         </main>
     )
