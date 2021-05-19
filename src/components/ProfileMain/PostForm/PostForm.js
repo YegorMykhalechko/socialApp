@@ -2,11 +2,24 @@ import React from 'react'
 
 import './PostForm.css'
 
-const PostForm = () => {
+const PostForm = (props) => {
+
+    const newPostEl = React.createRef()
+
+    const addPost = (e) => {
+        e.preventDefault()
+        props.addPost()
+    }
+
+    const changePost = (e) => {
+        e.preventDefault()
+        const text = newPostEl.current.value
+        props.changePostText(text)
+    }
     return (
         <form className="profile__form">
-            <input className="form__input" type="text" placeholder="your news..."></input>
-            <button className="form__btn" type="submit__btn">Send</button>
+            <input onChange={changePost} ref={newPostEl} className="form__input" type="text" value={props.newTextPost} placeholder='it`s you new post'></input>
+            <button onClick={addPost} className="form__btn" type="submit__btn">Send</button>
         </form>
     )
 }

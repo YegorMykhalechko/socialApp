@@ -1,9 +1,12 @@
+import { reRender } from './render'
+
 let state = {
   profile: {
     postData: [
       { id: 1, message: 'It`s first post', count: 10 },
       { id: 2, message: 'It`s second post', count: 20 },
-    ]
+    ],
+    newTextPost: ''
   },
 
   dialogs: {
@@ -19,8 +22,38 @@ let state = {
 
     messageData: [
       { id: 1, message: 'message1' }
-    ]
+    ],
+    newMessage: ''
   }
 }
+
+export const addPost = () => {
+  const newPost = {
+    id: 5, message: state.profile.newTextPost, count: 0
+  }
+  state.profile.postData.unshift(newPost)
+  changePostText('')
+  reRender(state)
+}
+
+export const changePostText = (newText) => {
+  state.profile.newTextPost = newText
+  reRender(state)
+}
+
+export const addMessage = () => {
+  const newMessage = {
+    id: 2, message: state.dialogs.newMessage
+  }
+  state.dialogs.messageData.unshift(newMessage)
+  changeMessage('')
+  reRender(state)
+}
+
+export const changeMessage = (newText) => {
+  state.dialogs.newMessage = newText
+  reRender(state)
+}
+
 
 export default state;
