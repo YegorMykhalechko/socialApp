@@ -1,4 +1,6 @@
-import { reRender } from './render'
+let reRender = () => {
+  console.log('OK')
+}
 
 let state = {
   profile: {
@@ -55,5 +57,8 @@ export const changeMessage = (newText) => {
   reRender(state)
 }
 
+export const subscribe = (observer) => {
+  reRender = observer
+}
 
 export default state;
