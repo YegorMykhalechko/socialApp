@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
-import state, { addPost, changePostText, addMessage, changeMessage, subscribe } from './state'
+import store from './state'
 
 const reRender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <App state={state} addPost={addPost} changePostText={changePostText} addMessage={addMessage} changeMessage={changeMessage} />
+                <App state={state} addPost={store.addPost.bind(store)} changePostText={store.changePostText.bind(store)} addMessage={store.addMessage.bind(store)} changeMessage={store.changeMessage.bind(store)} />
             </Router>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-reRender(state)
+reRender(store.getState())
 
-subscribe(reRender)
+store.subscribe(reRender)
 
 
