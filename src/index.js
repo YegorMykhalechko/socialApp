@@ -9,7 +9,7 @@ const reRender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <App state={state} addPost={store.addPost.bind(store)} changePostText={store.changePostText.bind(store)} addMessage={store.addMessage.bind(store)} changeMessage={store.changeMessage.bind(store)} />
+                <App state={state} dispatch={store.dispatch.bind(store)} />
             </Router>
         </React.StrictMode>,
         document.getElementById('root')

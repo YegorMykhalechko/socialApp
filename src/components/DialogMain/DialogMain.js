@@ -15,13 +15,13 @@ const DialogMain = (props) => {
 
     const addMessage = (e) => {
         e.preventDefault()
-        props.addMessage()
+        props.dispatch({ type: 'ADD-MESSAGE' })
     }
 
     const changeMessage = (e) => {
         e.preventDefault()
         const text = newPostEl.current.value
-        props.changeMessage(text)
+        props.dispatch({ type: 'CHANGE-MESSAGE', newText: text })
     }
 
     return (

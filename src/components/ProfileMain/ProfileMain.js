@@ -12,7 +12,7 @@ const ProfileMain = (props) => {
         <main className="page__main">
             <div className="profile__wrapper">
                 <ProfileDescr />
-                <PostForm addPost={props.addPost} changePostText={props.changePostText} newTextPost={props.profileState.newTextPost}/>
+                <PostForm dispatch={props.dispatch} newTextPost={props.profileState.newTextPost} />
                 <PostList profileState={props.profileState} />
             </div>
         </main>

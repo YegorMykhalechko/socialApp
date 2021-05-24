@@ -8,13 +8,13 @@ const PostForm = (props) => {
 
     const addPost = (e) => {
         e.preventDefault()
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'})
     }
 
     const changePost = (e) => {
         e.preventDefault()
         const text = newPostEl.current.value
-        props.changePostText(text)
+        props.dispatch({type: 'CHANGE-POST', newText: text})
     }
     return (
         <form className="profile__form">

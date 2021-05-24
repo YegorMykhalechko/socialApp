@@ -26,44 +26,43 @@ let store = {
     }
   },
 
-  getState() {
-    return this._state 
-  },
-
   _reRender() {
     console.log('OK')
   },
 
-  addPost () {
-    const newPost = {
-      id: 5, message: this._state.profile.newTextPost, count: 0
-    }
-    this._state.profile.postData.unshift(newPost)
-    this.changePostText('')
-    this._reRender(this._state)
+  getState() {
+    return this._state
   },
 
-  changePostText (newText) {
-    this._state.profile.newTextPost = newText
-    this._reRender(this._state)
-  },
-
-  addMessage () {
-    const newMessage = {
-      id: 2, message: this._state.dialogs.newMessage
-    }
-    this._state.dialogs.messageData.unshift(newMessage)
-    this.changeMessage('')
-    this._reRender(this._state)
-  },
-
-  changeMessage (newText) {
-    this._state.dialogs.newMessage = newText
-    this._reRender(this._state)
-  },
-
-  subscribe (observer) {
+  subscribe(observer) {
     this._reRender = observer
+  },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      const newPost = {
+        id: 5, message: this._state.profile.newTextPost, count: 0
+      }
+      this._state.profile.postData.unshift(newPost)
+      this._state.profile.newTextPost = ''
+      this._reRender(this._state)
+    }
+    else if (action.type === 'CHANGE-POST') {
+      this._state.profile.newTextPost = action.newText
+      this._reRender(this._state)
+    }
+    else if (action.type === 'ADD-MESSAGE') {
+      const newMessage = {
+        id: 2, message: this._state.dialogs.newMessage
+      }
+      this._state.dialogs.messageData.unshift(newMessage)
+      this._state.dialogs.newMessage = ''
+      this._reRender(this._state)
+    }
+    else if (action.type === 'CHANGE-MESSAGE') {
+      this._state.dialogs.newMessage = action.newText
+      this._reRender(this._state)
+    }
   }
 }
 
