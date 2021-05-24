@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { addPostActionCreator, changePostActionCreator } from '../../../action'
+
 import './PostForm.css'
 
 const PostForm = (props) => {
@@ -8,13 +10,13 @@ const PostForm = (props) => {
 
     const addPost = (e) => {
         e.preventDefault()
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addPostActionCreator())
     }
 
     const changePost = (e) => {
         e.preventDefault()
         const text = newPostEl.current.value
-        props.dispatch({type: 'CHANGE-POST', newText: text})
+        props.dispatch(changePostActionCreator(text))
     }
     return (
         <form className="profile__form">

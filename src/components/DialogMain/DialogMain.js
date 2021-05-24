@@ -3,6 +3,8 @@ import React from 'react'
 import DialogListItem from './DialogListItem'
 import DialogMessageItem from './DialogMessageItem'
 
+import { addMessageActionCreator, changeMessageActionCreator } from '../../action'
+
 import './DialogMain.css'
 
 const DialogMain = (props) => {
@@ -15,13 +17,13 @@ const DialogMain = (props) => {
 
     const addMessage = (e) => {
         e.preventDefault()
-        props.dispatch({ type: 'ADD-MESSAGE' })
+        props.dispatch(addMessageActionCreator())
     }
 
     const changeMessage = (e) => {
         e.preventDefault()
         const text = newPostEl.current.value
-        props.dispatch({ type: 'CHANGE-MESSAGE', newText: text })
+        props.dispatch(changeMessageActionCreator(text))
     }
 
     return (
