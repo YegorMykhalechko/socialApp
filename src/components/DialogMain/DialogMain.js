@@ -3,7 +3,7 @@ import React from 'react'
 import DialogListItem from './DialogListItem'
 import DialogMessageItem from './DialogMessageItem'
 
-import { addMessageActionCreator, changeMessageActionCreator } from '../../action'
+import { addMessageActionCreator, changeMessageActionCreator } from '../../redux/dialogReducer'
 
 import './DialogMain.css'
 
@@ -13,8 +13,6 @@ const DialogMain = (props) => {
 
     const newMessageData = props.dialogState.messageData.map((message) => <DialogMessageItem message={message.message} />)
 
-    const newPostEl = React.createRef()
-
     const addMessage = (e) => {
         e.preventDefault()
         props.dispatch(addMessageActionCreator())
@@ -22,7 +20,7 @@ const DialogMain = (props) => {
 
     const changeMessage = (e) => {
         e.preventDefault()
-        const text = newPostEl.current.value
+        const text = e.target.value
         props.dispatch(changeMessageActionCreator(text))
     }
 
@@ -33,7 +31,7 @@ const DialogMain = (props) => {
                 <ul className="dialog__list">
                     {newDialogData}
                 </ul>
-                <input onChange={changeMessage} ref={newPostEl} className="form__input" type="text" value={props.dialogState.newMessage} placeholder='text...'></input>
+                <input onChange={changeMessage} className="form__input" type="text" value={props.dialogState.newMessage} placeholder='text...'></input>
                 <button onClick={addMessage} className="form__btn" type="submit__btn">Send</button>
                 <ul className="message__list">
                     {newMessageData}

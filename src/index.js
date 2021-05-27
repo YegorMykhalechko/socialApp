@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
-import store from './state'
+import store from './redux/reduxStore'
 
 const reRender = (state) => {
     ReactDOM.render(
@@ -18,6 +18,9 @@ const reRender = (state) => {
 
 reRender(store.getState())
 
-store.subscribe(reRender)
+store.subscribe(()=> {
+    const state = store.getState();
+    reRender(state)
+})
 
 
