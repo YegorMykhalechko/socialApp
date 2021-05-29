@@ -4,15 +4,15 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
 import store from './redux/reduxStore'
-import StoreContext from './StoreContext'
+import StoreContext, {Provider} from './StoreContext'
 
 const reRender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <StoreContext.Provider value={store}>
+                <Provider store={store}>
                     <App />
-                </StoreContext.Provider>
+                </Provider>
             </Router>
         </React.StrictMode>,
         document.getElementById('root')
