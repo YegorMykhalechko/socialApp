@@ -1,11 +1,16 @@
 import React from 'react'
 
 import PostList from './PostList'
+import StoreContext from '../../../StoreContext'
 
-const PostListContainer = (props) => {
+const PostListContainer = () => {
 
     return (
-        <PostList state={props.store.getState().profile.postData}/>
+        <StoreContext.Consumer>
+            {
+                (store) => <PostList state={store.getState().profile.postData} />
+            }
+        </StoreContext.Consumer>
     )
 }
 

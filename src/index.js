@@ -4,12 +4,15 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
 import store from './redux/reduxStore'
+import StoreContext from './StoreContext'
 
 const reRender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <App store={store} state={state} dispatch={store.dispatch.bind(store)} />
+                <StoreContext.Provider value={store}>
+                    <App />
+                </StoreContext.Provider>
             </Router>
         </React.StrictMode>,
         document.getElementById('root')
@@ -18,7 +21,7 @@ const reRender = (state) => {
 
 reRender(store.getState())
 
-store.subscribe(()=> {
+store.subscribe(() => {
     const state = store.getState();
     reRender(state)
 })

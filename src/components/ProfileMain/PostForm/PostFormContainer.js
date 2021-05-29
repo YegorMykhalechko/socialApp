@@ -3,18 +3,28 @@ import React from 'react'
 import { addPostActionCreator, changePostActionCreator } from '../../../redux/profileReducer'
 
 import PostForm from './PostForm'
+import StoreContext from '../../../StoreContext'
 
-const PostFormContainer = (props) => {
+const PostFormContainer = () => {
 
-    const addPost = () => {
-        props.store.dispatch(addPostActionCreator())
-    }
-
-    const changePost = (text) => {
-        props.store.dispatch(changePostActionCreator(text))
-    }
     return (
-        <PostForm changePost={changePost} addPost={addPost} newTextPost={props.store.getState().profile.newTextPost} />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    const addPost = () => {
+                        store.dispatch(addPostActionCreator())
+                    }
+
+                    const changePost = (text) => {
+                        store.dispatch(changePostActionCreator(text))
+                    }
+                    return (
+                        <PostForm changePost={changePost} addPost={addPost} newTextPost={store.getState().profile.newTextPost} />
+                    )
+
+                }
+            }
+        </StoreContext.Consumer>
     )
 }
 

@@ -12,8 +12,8 @@ const ProfileMain = (props) => {
         <main className="page__main">
             <div className="profile__wrapper">
                 <ProfileDescr />
-                <PostFormContainer store={props.store} />
-                <PostListContainer store={props.store} />
+                <PostFormContainer />
+                <PostListContainer />
             </div>
         </main>
     )
