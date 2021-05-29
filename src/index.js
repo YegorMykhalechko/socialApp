@@ -9,7 +9,7 @@ const reRender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <App state={state} dispatch={store.dispatch.bind(store)} />
+                <App store={store} state={state} dispatch={store.dispatch.bind(store)} />
             </Router>
         </React.StrictMode>,
         document.getElementById('root')

@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import Header from '../Header'
 import NavBar from '../NavBar'
 import ProfileMain from '../ProfileMain'
-import DialogMain from '../DialogMain'
+import DialogMainContainer from '../DialogMain'
 
 import './App.css'
 
@@ -14,8 +14,8 @@ const App = (props) => {
         <div className="wrapper">
             <Header />
             <NavBar />
-            <Route path="/profile" render={() => <ProfileMain profileState={props.state.profile} dispatch={props.dispatch} />} />
-            <Route path="/dialogs" render={() => <DialogMain dialogState={props.state.dialogs} dispatch={props.dispatch} />} />
+            <Route path="/profile" render={() => <ProfileMain store={props.store} />} />
+            <Route path="/dialogs" render={() => <DialogMainContainer store={props.store} />} />
         </div>
     )
 }

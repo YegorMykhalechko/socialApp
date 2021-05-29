@@ -3,7 +3,7 @@ import React from 'react'
 import './ProfileMain.css'
 
 import PostFormContainer from './PostForm'
-import PostList from './PostList'
+import PostListContainer from './PostList'
 import ProfileDescr from './ProfileDescr'
 
 const ProfileMain = (props) => {
@@ -12,8 +12,8 @@ const ProfileMain = (props) => {
         <main className="page__main">
             <div className="profile__wrapper">
                 <ProfileDescr />
-                <PostFormContainer dispatch={props.dispatch} newTextPost={props.profileState.newTextPost} />
-                <PostList profileState={props.profileState} />
+                <PostFormContainer store={props.store} />
+                <PostListContainer store={props.store} />
             </div>
         </main>
     )

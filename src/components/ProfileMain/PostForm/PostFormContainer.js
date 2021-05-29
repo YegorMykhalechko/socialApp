@@ -7,14 +7,14 @@ import PostForm from './PostForm'
 const PostFormContainer = (props) => {
 
     const addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.store.dispatch(addPostActionCreator())
     }
 
     const changePost = (text) => {
-        props.dispatch(changePostActionCreator(text))
+        props.store.dispatch(changePostActionCreator(text))
     }
     return (
-        <PostForm changePost={changePost} addPost={addPost} newTextPost={props.newTextPost} />
+        <PostForm changePost={changePost} addPost={addPost} newTextPost={props.store.getState().profile.newTextPost} />
     )
 }
 

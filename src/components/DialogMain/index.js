@@ -1,3 +1,3 @@
-import DialogMain from './DialogMain'
+import DialogMainContainer from './DialogMainContainer'
 
-export default DialogMain
+export default DialogMainContainer
