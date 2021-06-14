@@ -1,0 +1,26 @@
+    .last-dialog__title{
+        text-align: center;
+    }
+    
+    .nav__list-dialogs {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 2rem;
+    }
+
+    .nav__list-item {
+        margin: 0 0 0.5rem 3rem;
+    }
+  
+  .nav__list-item a{
+    text-decoration: none;
+    color:#181717
+  }
+
+  .post__item-img {
+    max-width: 100%;
+    height: 3rem;
+  }
+  
