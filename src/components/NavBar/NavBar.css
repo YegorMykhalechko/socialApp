@@ -1,5 +1,6 @@
 .page__nav {
   grid-column-start: 1;
+  margin-bottom: 4rem;
 }
 
 .nav__list {
