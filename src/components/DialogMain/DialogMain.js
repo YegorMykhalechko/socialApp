@@ -7,9 +7,9 @@ import './DialogMain.css'
 
 const DialogMain = (props) => {
 
-    const newDialogData = props.stateDialog.map((dialog) => <DialogListItem name={dialog.name} id={dialog.id} />)
+    const newDialogData = props.stateDialog.map((dialog) => <DialogListItem name={dialog.name} key={dialog.id} id={dialog.id} />)
 
-    const newMessageData = props.stateMessage.map((message) => <DialogMessageItem message={message.message} />)
+    const newMessageData = props.stateMessage.map((message) => <DialogMessageItem message={message.message} key={message.id} />)
 
     const addMessage = (e) => {
         e.preventDefault()

@@ -1,0 +1,24 @@
+.friends{
+    display: flex;
+    flex-direction: column;
+}
+
+.friends__wrapper{
+    display: flex;
+}
+
+.friends__main{
+    margin-right: 3rem;
+}
+
+.friends__avatar {
+    height: 10rem;
+}
+
+.friends__info {
+    margin-bottom: 1.5rem;
+}
+
+.friends__name {
+    font-size: 1.5rem;
+}

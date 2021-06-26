@@ -6,7 +6,7 @@ import Post from './Post'
 
 const PostList = (props) => {
 
-    const newPostData = props.state.map((post) => <Post message={post.message} count={post.count} />)
+    const newPostData = props.state.map((post) => <Post message={post.message} key={post.id} count={post.count} />)
 
     return (
         <div className="profile__post">
