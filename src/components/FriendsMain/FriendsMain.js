@@ -5,14 +5,17 @@ import './FriendsMain.css';
 
 const FriendsMain = (props) => {
 
-    useEffect (() => {
-        if (props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").
-                then(res => {
-                    props.setUser(res.data.items)
+    const totalUserCount = Math.ceil(props.totalCount / props.pageSize);
+    const [page, nextPage] = useState(props.currentPage);
+
+    useEffect ((props) => {
+            const url = `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`
+            axios.get(url)
+                .then(res => {
+                    props.setUser(res.data.items);
+                    props.setTotalCount(res.data.totalCount)
                 })
-        }
-    });
+    },[page]);
 
     return <div className="friends">
         {
@@ -37,9 +40,14 @@ const FriendsMain = (props) => {
                         </div>
                     </div>
                 </div>
-
             </div>)
         }
+        <div>
+            {page > 1 ? (<button onClick={() => nextPage(page - 1)}>Previous</button>) : ''}
+        </div>
+        <div>
+            {page < totalUserCount ? (<button onClick={() => nextPage(page + 1)}>Next</button>) : ''}
+        </div>
     </div>
 }
 
