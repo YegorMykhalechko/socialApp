@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Loader from '../../helpers/Loader'
 import * as axios from 'axios';
 
 import './FriendsMain.css';
@@ -8,16 +9,20 @@ const FriendsMain = (props) => {
     const totalUserCount = Math.ceil(props.totalCount / props.pageSize);
     const [page, nextPage] = useState(props.currentPage);
 
-    useEffect ((props) => {
+    useEffect (() => {
+            props.toogleLoading(true)
             const url = `https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`
             axios.get(url)
                 .then(res => {
-                    props.setUser(res.data.items);
+                    props.toogleLoading(false)
+                    props.setUser(res.data.items)
                     props.setTotalCount(res.data.totalCount)
                 })
     },[page]);
 
-    return <div className="friends">
+    return <>
+    {props.isLoading ? <Loader /> : null}
+    <div className="friends">
         {
             props.users.map(u => <div key={u.id}>
                 <div className="friends__wrapper">
@@ -49,6 +54,7 @@ const FriendsMain = (props) => {
             {page < totalUserCount ? (<button onClick={() => nextPage(page + 1)}>Next</button>) : ''}
         </div>
     </div>
+    </>
 }
 
 export default FriendsMain;
